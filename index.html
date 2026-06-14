@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VNovels - عالم الروايات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-v">V</span><span class="logo-novels">Novels</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link active">الرئيسية</a>
+        <a href="#categories" class="nav-link">التصنيفات</a>
+        <a href="#latest" class="nav-link">أحدث الروايات</a>
+        <a href="#top-rated" class="nav-link">الأعلى تقييماً</a>
+        <a href="about.html" class="nav-link">عن الموقع</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn-search" id="searchToggle" aria-label="بحث">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <div id="authArea">
+          <button class="btn-login" id="loginBtn">تسجيل الدخول</button>
+        </div>
+        <button class="btn-menu" id="menuToggle" aria-label="القائمة">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar" id="searchBar">
+      <div class="search-inner">
+        <input type="text" id="searchInput" placeholder="ابحث عن رواية..." class="search-input" />
+        <button class="search-close" id="searchClose">✕</button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU DRAWER -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="menu-drawer" id="menuDrawer">
+    <div class="drawer-header">
+      <span class="logo"><span class="logo-v">V</span><span class="logo-novels">Novels</span></span>
+      <button class="drawer-close" id="drawerClose">✕</button>
+    </div>
+    <div class="drawer-user" id="drawerUser">
+      <div class="drawer-avatar" id="drawerAvatar">👤</div>
+      <span id="drawerUserName">زائر</span>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-link">
+        <span class="drawer-icon">🏠</span> الرئيسية
+      </a>
+      <a href="#categories" class="drawer-link" id="drawerCatLink">
+        <span class="drawer-icon">📚</span> التصنيفات
+      </a>
+      <a href="#latest" class="drawer-link">
+        <span class="drawer-icon">✨</span> أحدث الروايات
+      </a>
+      <a href="#top-rated" class="drawer-link">
+        <span class="drawer-icon">⭐</span> الأعلى تقييماً
+      </a>
+      <a href="about.html" class="drawer-link">
+        <span class="drawer-icon">ℹ️</span> عن الموقع
+      </a>
+      <a href="#" class="drawer-link" id="drawerFavorites">
+        <span class="drawer-icon">❤️</span> المفضلة
+      </a>
+      <a href="#" class="drawer-link" id="drawerHistory">
+        <span class="drawer-icon">🕐</span> سجل القراءة
+      </a>
+    </nav>
+    <div class="drawer-admin" id="drawerAdmin" style="display:none">
+      <div class="drawer-divider">لوحة الإدارة</div>
+      <a href="admin.html" class="drawer-link admin-link">
+        <span class="drawer-icon">⚙️</span> إدارة الموقع
+      </a>
+      <a href="publish.html" class="drawer-link admin-link">
+        <span class="drawer-icon">📝</span> نشر رواية جديدة
+      </a>
+    </div>
+    <div class="drawer-footer">
+      <button class="btn-login-drawer" id="drawerLoginBtn">تسجيل الدخول بـ Google</button>
+      <button class="btn-logout-drawer" id="drawerLogoutBtn" style="display:none">تسجيل الخروج</button>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-particles" id="particles"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">✦ اكتشف عوالم لا حدود لها ✦</div>
+      <h1 class="hero-title">
+        <span class="hero-title-v">V</span>Novels
+      </h1>
+      <p class="hero-subtitle">مكتبة روايات عربية حصرية — غموض، خيال، رومانسية، وأكثر</p>
+      <div class="hero-actions">
+        <a href="#latest" class="btn-primary">استكشف الروايات</a>
+        <a href="#categories" class="btn-ghost">تصفح التصنيفات</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span id="totalNovels">0</span><small>رواية</small></div>
+        <div class="stat-sep">|</div>
+        <div class="stat"><span id="totalCategories">8</span><small>تصنيف</small></div>
+        <div class="stat-sep">|</div>
+        <div class="stat"><span>مجاناً<br>100%</span><small>للقراءة</small></div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>اسحب للأسفل</span>
+    </div>
+  </section>
+
+  <!-- CATEGORIES SECTION -->
+  <section class="section categories-section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">اكتشف</span>
+        <h2 class="section-title">التصنيفات</h2>
+        <p class="section-sub">اختر النوع الذي يناسب مزاجك</p>
+      </div>
+      <div class="categories-grid" id="categoriesGrid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED NOVEL -->
+  <section class="featured-section" id="featured">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">مميز</span>
+        <h2 class="section-title">رواية المميزة</h2>
+      </div>
+      <div id="featuredNovel" class="featured-novel-card">
+        <p class="empty-msg">لا توجد رواية مميزة بعد.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST NOVELS -->
+  <section class="section" id="latest">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">جديد</span>
+        <h2 class="section-title">أحدث الروايات</h2>
+        <div class="filter-bar" id="filterBar">
+          <button class="filter-btn active" data-cat="all">الكل</button>
+        </div>
+      </div>
+      <div class="novels-grid" id="novelsGrid">
+        <div class="empty-state">
+          <div class="empty-icon">📖</div>
+          <p>لا توجد روايات بعد. ترقبوا قريباً!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOP RATED -->
+  <section class="section dark-section" id="top-rated">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">⭐ الأفضل</span>
+        <h2 class="section-title">الأعلى تقييماً</h2>
+      </div>
+      <div class="top-list" id="topRatedList">
+        <div class="empty-state">
+          <div class="empty-icon">🏆</div>
+          <p>لا توجد تقييمات بعد.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-logo"><span class="logo-v">V</span><span class="logo-novels">Novels</span></div>
+      <h2 class="modal-title">أهلاً بك</h2>
+      <p class="modal-sub">سجّل دخولك للاستمتاع بكامل المميزات</p>
+      <button class="btn-google" id="googleLoginBtn">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" alt="Google" />
+        تسجيل الدخول بـ Google
+      </button>
+      <p class="modal-note">بالدخول توافق على شروط الاستخدام وسياسة الخصوصية</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><span class="logo-v">V</span><span class="logo-novels">Novels</span></a>
+          <p>مكتبة روايات عربية حصرية. عوالم لا تنتهي تنتظرك.</p>
+        </div>
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <a href="#latest">أحدث الروايات</a>
+          <a href="#categories">التصنيفات</a>
+          <a href="#top-rated">الأعلى تقييماً</a>
+          <a href="about.html">عن الموقع</a>
+        </div>
+        <div class="footer-cats">
+          <h4>التصنيفات</h4>
+          <div id="footerCats"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 VNovels — جميع الحقوق محفوظة</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase SDKs -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
