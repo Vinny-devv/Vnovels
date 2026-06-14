@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>نشر رواية — VNovels</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="publish.css"/>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><span class="logo-v">V</span><span class="logo-novels">Novels</span></a>
+      <div class="nav-actions">
+        <div id="authArea"></div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="publish-main">
+    <!-- Access Check -->
+    <div id="accessDenied" style="display:none" class="access-denied">
+      <div class="denied-icon">🔒</div>
+      <h2>وصول مقيّد</h2>
+      <p>هذه الصفحة للمشرف فقط.</p>
+      <a href="index.html" class="btn-primary">العودة للرئيسية</a>
+    </div>
+
+    <!-- Publish Form -->
+    <div id="publishForm">
+      <div class="publish-header">
+        <span class="section-tag">📝 لوحة النشر</span>
+        <h1 class="section-title">نشر رواية جديدة</h1>
+        <p class="section-sub">أضف رواية جديدة إلى مكتبة VNovels</p>
+      </div>
+
+      <div class="form-card">
+        <!-- Cover Upload -->
+        <div class="form-group cover-group">
+          <label class="form-label">غلاف الرواية</label>
+          <div class="cover-upload" id="coverUpload">
+            <div class="cover-preview" id="coverPreview">
+              <div class="upload-placeholder">
+                <span class="upload-icon">🖼️</span>
+                <span>اضغط لاختيار صورة من هاتفك</span>
+                <small>PNG, JPG, WEBP — حتى 5MB</small>
+              </div>
+            </div>
+            <input type="file" id="coverInput" accept="image/*" hidden/>
+            <div class="cover-actions">
+              <button class="btn-upload" onclick="document.getElementById('coverInput').click()">
+                📷 اختر صورة
+              </button>
+              <button class="btn-remove-cover" id="removeCover" style="display:none">✕ إزالة</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <!-- Title -->
+          <div class="form-group">
+            <label class="form-label" for="title">عنوان الرواية <span class="req">*</span></label>
+            <input type="text" id="title" class="form-input" placeholder="أدخل عنوان الرواية..." maxlength="100"/>
+          </div>
+          <!-- Category -->
+          <div class="form-group">
+            <label class="form-label" for="category">التصنيف <span class="req">*</span></label>
+            <select id="category" class="form-input">
+              <option value="">اختر تصنيفاً...</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label class="form-label" for="description">ملخص الرواية</label>
+          <textarea id="description" class="form-input form-textarea" placeholder="اكتب ملخصاً مشوقاً للرواية..." rows="4" maxlength="600"></textarea>
+          <div class="char-count"><span id="descCount">0</span>/600</div>
+        </div>
+
+        <!-- Tags -->
+        <div class="form-group">
+          <label class="form-label" for="tagsInput">الوسوم (Tags)</label>
+          <div class="tags-input-wrap">
+            <input type="text" id="tagsInput" class="form-input" placeholder="اكتب وسماً واضغط Enter..."/>
+            <div class="tags-list" id="tagsList"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <!-- Status -->
+          <div class="form-group">
+            <label class="form-label" for="status">حالة الرواية</label>
+            <select id="status" class="form-input">
+              <option value="ongoing">مستمرة</option>
+              <option value="completed">مكتملة</option>
+              <option value="paused">متوقفة مؤقتاً</option>
+            </select>
+          </div>
+          <!-- Featured -->
+          <div class="form-group">
+            <label class="form-label">تمييز الرواية</label>
+            <label class="toggle-label">
+              <input type="checkbox" id="featured" class="toggle-input"/>
+              <span class="toggle-track"></span>
+              <span class="toggle-text">جعلها الرواية المميزة</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- First Chapter -->
+        <div class="form-group">
+          <label class="form-label" for="firstChapter">الفصل الأول (اختياري)</label>
+          <textarea id="firstChapter" class="form-input form-textarea" placeholder="أضف محتوى الفصل الأول هنا..." rows="8"></textarea>
+        </div>
+
+        <!-- Actions -->
+        <div class="form-actions">
+          <button class="btn-cancel" onclick="history.back()">إلغاء</button>
+          <button class="btn-submit" id="submitBtn" onclick="publishNovel()">
+            <span id="submitText">🚀 نشر الرواية</span>
+            <div class="spinner" id="spinner" style="display:none"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="publish.js"></script>
+</body>
+</html>
